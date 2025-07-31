@@ -45,6 +45,6 @@ commands:
         kind: build
 
 events:
-  preStart:
+  postStart:
     - install-tools-exec
     - install-vscode-extensions-exec
