@@ -16,7 +16,7 @@ components:
 
 commands:
   - id: install-tools
-    exec:
+    apply:
       component: dev-tools
       commandLine: |
         # Install Terraform via tfswitch
@@ -32,7 +32,7 @@ commands:
         ibmcloud version
 
   - id: install-vscode-extensions
-    exec:
+    apply:
       component: dev-tools
       commandLine: |
         code-server --install-extension HashiCorp.terraform
