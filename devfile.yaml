@@ -2,7 +2,7 @@ schemaVersion: 2.2.0
 components:
   - name: dev-tools
     container:
-      image: quay.io/devfile/base-developer-image:ubi9-latest
+      image: quay.io/devfile/universal-developer-image:ubi9-latest
       memoryLimit: 4Gi
       cpuLimit: 2000m
       memoryRequest: 1Gi
