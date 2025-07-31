@@ -16,7 +16,7 @@ components:
 
 commands:
   - id: install-tools
-    exec:
+    apply:
       component: dev-tools
       commandLine: |
         # Install Terraform via tfswitch
@@ -31,21 +31,16 @@ commands:
         terraform version
         ibmcloud version
       workingDir: /workspaces/terraform-simple-template
-      group:
-        kind: build
-        isDefault: true
 
   - id: install-vscode-extensions
-    exec:
+    apply:
       component: dev-tools
       commandLine: |
         code-server --install-extension HashiCorp.terraform
         # code-server --install-extension redhat.vscode-yaml
-        # code-server --install-extension ms-vscode.vscode-json
+        # code-server --install-extension ms-vscode.json
         # code-server --install-extension GitLab.gitlab-workflow
       workingDir: /workspaces/terraform-simple-template
-      group:
-        kind: build
 
 events:
   preStart:
