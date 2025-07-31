@@ -12,26 +12,6 @@ components:
       cpuRequest: 500m
       mountSources: true
 commands:
-  - id: install-tools-exec
-    exec:
-      component: dev-tools
-      commandLine: |
-        # Install Terraform via tfswitch
-        curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
-        tfswitch
-
-        # Install IBM Cloud CLI
-        curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-        ibmcloud plugin install -f
-
-        # Verify install
-        terraform version
-        ibmcloud version
-      workingDir: /workspaces/terraform-simple-template
-      group:
-        kind: build
-        isDefault: true
-
   - id: install-vscode-extensions-exec
     exec:
       component: dev-tools
