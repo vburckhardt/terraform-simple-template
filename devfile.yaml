@@ -47,7 +47,7 @@ commands:
       commands:
         - "install-tools-exec"
       group:
-        kind: build
+        kind: apply
         isDefault: true
 
   - id: install-vscode-extensions
@@ -55,7 +55,7 @@ commands:
       commands:
         - "install-vscode-extensions-exec"
       group:
-        kind: build
+        kind: apply
 
   - id: startup
     composite:
@@ -63,7 +63,7 @@ commands:
         - "install-tools"
         - "install-vscode-extensions"
       group:
-        kind: build
+        kind: apply
         isDefault: true
 
 events:
