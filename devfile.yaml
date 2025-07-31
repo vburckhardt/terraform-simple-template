@@ -15,41 +15,52 @@ components:
       mountSources: true
 
 commands:
+  - id: install-tools-exec
+    exec:
+      component: dev-tools
+      commandLine: |
+        # Install Terraform via tfswitch
+        curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
+        tfswitch        
+        
+        # Install IBM Cloud CLI
+        curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+        ibmcloud plugin install -a
+        
+        # Verify install
+        terraform version
+        ibmcloud version
+      workingDir: /workspaces/terraform-simple-template
+      group:
+        kind: build
+        isDefault: true
+
+  - id: install-vscode-extensions-exec
+    exec:
+      component: dev-tools
+      commandLine: |
+        code-server --install-extension HashiCorp.terraform
+        # code-server --install-extension redhat.vscode-yaml
+        # code-server --install-extension ms-vscode.json
+        # code-server --install-extension GitLab.gitlab-workflow
+      workingDir: /workspaces/terraform-simple-template
+      group:
+        kind: build
+
   - id: install-tools
     composite:
       commands:
-        - exec:
-            component: dev-tools
-            commandLine: |
-              # Install Terraform via tfswitch
-              curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
-              tfswitch        
-              
-              # Install IBM Cloud CLI
-              curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-              ibmcloud plugin install -a
-              
-              # Verify install
-              terraform version
-              ibmcloud version
-            workingDir: /workspaces/terraform-simple-template
+        - "install-tools-exec"
       group:
-        kind: apply
+        kind: build
         isDefault: true
 
   - id: install-vscode-extensions
     composite:
       commands:
-        - exec:
-            component: dev-tools
-            commandLine: |
-              code-server --install-extension HashiCorp.terraform
-              # code-server --install-extension redhat.vscode-yaml
-              # code-server --install-extension ms-vscode.json
-              # code-server --install-extension GitLab.gitlab-workflow
-            workingDir: /workspaces/terraform-simple-template
+        - "install-vscode-extensions-exec"
       group:
-        kind: apply
+        kind: build
 
 events:
   preStart:
