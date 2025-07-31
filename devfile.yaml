@@ -16,31 +16,40 @@ components:
 
 commands:
   - id: install-tools
-    apply:
-      component: dev-tools
-      commandLine: |
-        # Install Terraform via tfswitch
-        curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
-        tfswitch        
-        
-        # Install IBM Cloud CLI
-        curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-        ibmcloud plugin install -a
-        
-        # Verify install
-        terraform version
-        ibmcloud version
-      workingDir: /workspaces/terraform-simple-template
+    composite:
+      commands:
+        - exec:
+            component: dev-tools
+            commandLine: |
+              # Install Terraform via tfswitch
+              curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
+              tfswitch        
+              
+              # Install IBM Cloud CLI
+              curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+              ibmcloud plugin install -a
+              
+              # Verify install
+              terraform version
+              ibmcloud version
+            workingDir: /workspaces/terraform-simple-template
+      group:
+        kind: apply
+        isDefault: true
 
   - id: install-vscode-extensions
-    apply:
-      component: dev-tools
-      commandLine: |
-        code-server --install-extension HashiCorp.terraform
-        # code-server --install-extension redhat.vscode-yaml
-        # code-server --install-extension ms-vscode.json
-        # code-server --install-extension GitLab.gitlab-workflow
-      workingDir: /workspaces/terraform-simple-template
+    composite:
+      commands:
+        - exec:
+            component: dev-tools
+            commandLine: |
+              code-server --install-extension HashiCorp.terraform
+              # code-server --install-extension redhat.vscode-yaml
+              # code-server --install-extension ms-vscode.json
+              # code-server --install-extension GitLab.gitlab-workflow
+            workingDir: /workspaces/terraform-simple-template
+      group:
+        kind: apply
 
 events:
   preStart:
