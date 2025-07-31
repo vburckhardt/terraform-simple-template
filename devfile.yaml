@@ -17,8 +17,3 @@ components:
       env:
         - name: TF_IN_AUTOMATION
           value: "true"
-
-customizations:
-  vscode:
-    extensions:
-      - hashicorp.terraform
