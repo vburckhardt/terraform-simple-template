@@ -1,17 +1,17 @@
 # terraform-lab-devfile.yaml
 schemaVersion: 2.2.0
-meta:
+metadata:
   name: terraform
   displayName: Terraform Environment
 
 components:
   - name: dev-tools
     container:
-      image: 'quay.io/devfile/base-developer-image:ubi9-latest'
-      memoryLimit: '4Gi'
-      cpuLimit: '2000m'
-      memoryRequest: '1Gi'
-      cpuRequest: '500m'
+      image: quay.io/devfile/base-developer-image:ubi9-latest
+      memoryLimit: 4Gi
+      cpuLimit: 2000m
+      memoryRequest: 1Gi
+      cpuRequest: 500m
       mountSources: true
 
 commands:
@@ -39,7 +39,6 @@ commands:
         # code-server --install-extension redhat.vscode-yaml
         # code-server --install-extension ms-vscode.vscode-json
         # code-server --install-extension GitLab.gitlab-workflow
-
 
 events:
   preStart:
