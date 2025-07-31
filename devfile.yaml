@@ -1,0 +1,24 @@
+schemaVersion: 2.2.0
+metadata:
+  name: terraform-template
+  version: 1.0.0
+  displayName: Terraform Template Project
+  description: Lightweight devfile for Terraform development
+
+components:
+  - name: terraform-container
+    container:
+      image: hashicorp/terraform:1.6.6
+      memoryLimit: 512Mi
+      cpuLimit: 500m
+      mountSources: true
+      command: ["/bin/sh"]
+      args: ["-c", "while sleep 1000; do :; done"]
+      env:
+        - name: TF_IN_AUTOMATION
+          value: "true"
+
+customizations:
+  vscode:
+    extensions:
+      - hashicorp.terraform
