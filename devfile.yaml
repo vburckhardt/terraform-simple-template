@@ -43,8 +43,4 @@ commands:
       workingDir: /workspaces/terraform-simple-template
       group:
         kind: build
-
-events:
-  postStart:
-    - install-tools-exec
-    - install-vscode-extensions-exec
+        isDefault: true
