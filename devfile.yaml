@@ -28,6 +28,9 @@ commands:
         terraform version
         ibmcloud version
       workingDir: /workspaces/terraform-simple-template
+      group:
+        kind: build
+        isDefault: true
 
   - id: install-vscode-extensions-exec
     exec:
@@ -38,31 +41,10 @@ commands:
         code-server --install-extension ms-vscode.json
         code-server --install-extension GitLab.gitlab-workflow
       workingDir: /workspaces/terraform-simple-template
-
-  - id: install-tools
-    composite:
-      commands:
-        - install-tools-exec
       group:
         kind: build
-        isDefault: true
-
-  - id: install-vscode-extensions
-    composite:
-      commands:
-        - install-vscode-extensions-exec
-      group:
-        kind: build
-
-  - id: startup
-    composite:
-      commands:
-        - install-tools
-        - install-vscode-extensions
-      group:
-        kind: build
-        isDefault: true
 
 events:
   preStart:
-    - startup
+    - install-tools-exec
+    - install-vscode-extensions-exec
