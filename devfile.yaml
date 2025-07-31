@@ -1,9 +1,7 @@
-# terraform-lab-devfile.yaml
 schemaVersion: 2.2.0
 metadata:
   name: terraform
   displayName: Terraform Environment
-
 components:
   - name: dev-tools
     container:
@@ -13,7 +11,6 @@ components:
       memoryRequest: 1Gi
       cpuRequest: 500m
       mountSources: true
-
 commands:
   - id: install-tools-exec
     exec:
@@ -21,12 +18,12 @@ commands:
       commandLine: |
         # Install Terraform via tfswitch
         curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
-        tfswitch        
-        
+        tfswitch
+
         # Install IBM Cloud CLI
         curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-        ibmcloud plugin install -a
-        
+        ibmcloud plugin install -f
+
         # Verify install
         terraform version
         ibmcloud version
@@ -37,33 +34,33 @@ commands:
       component: dev-tools
       commandLine: |
         code-server --install-extension HashiCorp.terraform
-        # code-server --install-extension redhat.vscode-yaml
-        # code-server --install-extension ms-vscode.json
-        # code-server --install-extension GitLab.gitlab-workflow
+        code-server --install-extension redhat.vscode-yaml
+        code-server --install-extension ms-vscode.json
+        code-server --install-extension GitLab.gitlab-workflow
       workingDir: /workspaces/terraform-simple-template
 
   - id: install-tools
     composite:
       commands:
-        - "install-tools-exec"
+        - install-tools-exec
       group:
-        kind: apply
+        kind: run
         isDefault: true
 
   - id: install-vscode-extensions
     composite:
       commands:
-        - "install-vscode-extensions-exec"
+        - install-vscode-extensions-exec
       group:
-        kind: apply
+        kind: run
 
   - id: startup
     composite:
-      commands: 
-        - "install-tools"
-        - "install-vscode-extensions"
+      commands:
+        - install-tools
+        - install-vscode-extensions
       group:
-        kind: apply
+        kind: run
         isDefault: true
 
 events:
