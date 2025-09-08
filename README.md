@@ -1,11 +1,6 @@
 # Terraform Simple Template
 
-A simple Terraform template to get you started with infrastructure as code.
-
-## Prerequisites
-
-- [Terraform](https://www.terraform.io/downloads.html) >= 1.0
-- Cloud provider credentials (AWS, Azure, GCP, etc.)
+A simple, minimal Terraform template to get you started with infrastructure as code.
 
 ## Quick Start
 
