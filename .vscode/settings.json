@@ -1,0 +1,8 @@
+{
+  "window.header": "IBM TechXchange",
+  "window.commandCenter": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#0043CE",
+    "titleBar.activeForeground": "#FFFFFF"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "trustedExtensionAuthAccess": [
+    "HashiCorp.terraform",
+    "GitLab.gitlab-workflow",
+    "redhat.vscode-yaml"
+  ]
+}
