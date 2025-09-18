@@ -2,7 +2,6 @@
   "recommendations": [
     "HashiCorp.terraform",
     "redhat.vscode-yaml",
-    "ms-vscode.json",
-    "GitLab.gitlab-workflow"
+    "ms-vscode.json"
   ]
 }
