@@ -1,1 +1,1 @@
-# Define input variables for the Terraform configuration
+# variables.tf - Defines the inputs your infrastructure needs

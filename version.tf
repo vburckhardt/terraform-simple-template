@@ -1,2 +1,2 @@
-# Configure required versions for Terraform provider
+# version.tf - Specifies which versions of Terraform and providers to use
 

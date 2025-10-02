@@ -1,1 +1,1 @@
-# Configure Terraform providers used by this solution
+# providers.tf - Sets up the cloud provider connections for this project

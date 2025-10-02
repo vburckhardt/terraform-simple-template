@@ -1,6 +1,17 @@
 # Terraform Simple Template
 
-A simple, minimal Terraform template to get you started with infrastructure as code.
+A simple, minimal Terraform template to help you get started with infrastructure as code. Terraform lets you define your cloud resources in code instead of clicking through web consoles.
+
+## What's Included
+
+This template contains the essential files for any Terraform project:
+
+- **main.tf** - Where you define your infrastructure resources
+- **variables.tf** - Defines the inputs your infrastructure needs
+- **terraform.tfvars** - Contains the actual values for your variables
+- **providers.tf** - Sets up the cloud provider connections
+- **outputs.tf** - Specifies what information to show after deployment
+- **version.tf** - Ensures everyone uses compatible versions
 
 ## Quick Start
 
@@ -11,41 +22,29 @@ A simple, minimal Terraform template to get you started with infrastructure as c
    cd terraform-simple-template
    ```
 
-2. Initialize Terraform:
+2. Edit `terraform.tfvars` to add your specific configuration values
+
+3. Initialize Terraform (downloads necessary providers):
 
    ```bash
    terraform init
    ```
 
-3. Review the planned changes:
+4. Review the planned changes:
 
    ```bash
    terraform plan
    ```
 
-4. Apply the configuration:
+5. Apply the configuration to create resources:
 
    ```bash
    terraform apply
    ```
 
-## Files Structure
-
-- `main.tf` - Main Terraform configuration
-- `variables.tf` - Input variables
-- `outputs.tf` - Output values
-- `terraform.tfvars.example` - Example variables file
-
-## Usage
-
-1. Copy `terraform.tfvars.example` to `terraform.tfvars`
-2. Update the variables in `terraform.tfvars` with your values
-3. Run `terraform plan` to review changes
-4. Run `terraform apply` to create resources
-
 ## Cleanup
 
-To destroy the created resources:
+To remove all resources created by this template:
 
 ```bash
 terraform destroy

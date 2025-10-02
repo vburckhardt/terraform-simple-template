@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "HashiCorp.terraform",
-    "redhat.vscode-yaml",
     "ms-vscode.json"
   ]
 }
