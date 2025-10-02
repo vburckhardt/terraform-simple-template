@@ -1,1 +1,1 @@
-# Configure Terraform providers and required versions
+# Configure Terraform providers used by this solution
